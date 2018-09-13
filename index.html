@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <title>Example App</title>
+    <link rel="stylesheet" type="text/css" href="static/css/index.css" />
+    <link href="https://unpkg.com/ionicons@4.4.2/dist/css/ionicons.min.css" rel="stylesheet">
+    <script src="static/js/xml2json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div style="float: left; color: #00896c; letter-spacing: 3px;">HYGEE</div>
+            <i class="icon ion-ios-power" @click="quit" style="float: right"></i>
+        </header>
+        <input id="word-input" v-model="word" @keyup.enter="search" autofocus="autofocus" @keyup.esc="clearInput" onfocus="this.select()">
+        <div v-if="info !== null">
+            <div class="name-ps-line">
+                <h3 class="word-name">{{info.key}}</h3>
+                <div class="ps">
+                    <span>|BrE {{info.ps[0]}}</span>
+                    <span>, AmE {{info.ps[1]}}|</span>
+                </div>
+            </div>
+            <div v-for="(pos, key) in info.pos" :key="key">
+                <span>{{pos}}</span>
+                <span>{{info.acceptation[key]}}</span>
+            </div>
+            <section>
+                <div v-for="(sentence, i) in info.sent" :key="i">
+                    <p class="orig">
+                        <i class="sent-no">{{i}}</i>{{sentence.orig}}</p>
+                    <p class="trans">{{sentence.trans}}</p>
+                </div>
+            </section>
+        </div>
+        <div class="wrapper" v-else>
+            <div class="rubik-loader"></div>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            computed: {
+            },
+            data: {
+                word: '',
+                info: null
+            },
+            methods: {
+                search() {
+                    this.info = null;
+                    fetch(`http://dict-co.iciba.com/api/dictionary.php?w=${this.word}&key=1A64792E16D155BAB28664F83A92D91B`) // 返回一个Promise对象
+                        .then((res) => {
+                            return res.text() // res.text()是一个Promise对象
+                        })
+                        .then((res) => {
+                            var x2js = new X2JS();
+                            this.info = x2js.xml_str2json(res).dict
+
+                            if (typeof this.info.pos === 'string') {
+                                this.info.pos = [this.info.pos]
+                                this.info.acceptation = [this.info.acceptation]
+                            } else {
+                                if (this.info.pos[1] === '.') {
+                                    this.info.pos = [this.info.pos[0] + '.'];
+                                    this.info.acceptation = [this.info.acceptation[0] + this.info.acceptation[1]]
+                                }
+                            }
+                            console.log(this.info)
+                        })
+                },
+                quit() {
+                    window.close()
+                },
+                clearInput() {
+                    this.word = ''
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+* {
+    font-size: 14px;
+    font-family: 'PingFang SC', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 'sans-serif';
+}
+
+body {
+    padding: 10px;
+    background-color: white;
+}
+
+#app{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#app::-webkit-scrollbar {
+    display: none;
+}
+
+header {
+    width: 100%;
+    height: 30px;
+}
+
+#word-input {
+    padding: 0 10px;
+    background-color: white;
+    border: none;
+    background-color: #eee;
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    outline: none;
+}
+
+.name-ps-line {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.word-name {
+    flex: 0 0 auto;
+    margin: 0;
+    margin-right: 20px;
+    font-size: 18px;
+    font-family: 'PingFang SC';
+}
+
+.ps {
+    flex: 0 0 auto;
+    margin-top: 3px;
+}
+
+.sent-no {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    background-color: #00896c;
+    border-radius: 50%;
+    font-size: 12px;
+    color: white;
+    line-height: 16px;
+    text-align: center;
+    font-style: normal;
+    vertical-align: top;
+    margin-top: 2px;
+}
+.orig {
+    font-weight: 600;
+}
+
+.trans {
+    font-weight: 400;
+    color: gray;
+}
+
+.ion-ios-power {
+    font-size: 20px;
+    color: gray;
+}
+
+.ion-ios-power:hover {
+    color: #00896c;
+}
+
+.rubik-loader{
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url(../img/loading.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
