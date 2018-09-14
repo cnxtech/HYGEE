@@ -15,7 +15,7 @@ Meet unfamiliar words ? Just click HYGEE in menubar and get meanings in 5 second
 
 ## Usage
 
-- Press <kbd>enter<kbd/>to search.
+- Press <kbd>enter</kbd>to search.
 - Press <kbd>esc</kbd> to clear the input field.
 - Click `Power Icon` to close.
 
