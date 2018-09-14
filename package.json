@@ -3,8 +3,20 @@
   "version": "1.0.0",
   "description": "a simple dictionary",
   "main": "index.js",
+  "build": {
+    "appId": "top.lioder.hygee",
+    "dmg": {
+      "title": "HYGEE-1.0.0",
+      "icon": "./static/img/logo@2x.png",
+      "window": {
+        "x": 400,
+        "y": 300
+      }
+    }
+  },
   "scripts": {
-    "build": "electron-packager . Example --platform=darwin --arch=x64 --version=0.36.0 --icon=Icon.icns",
+    "dist": "electron-builder",
+    "build": "electron-packager . HYGEE --platform=darwin --arch=x64 --version=0.36.0",
     "start": "electron ."
   },
   "author": "lioder",
