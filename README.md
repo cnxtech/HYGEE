@@ -19,4 +19,12 @@ Meet unfamiliar words ? Just click HYGEE in menubar and get meanings in 5 second
 - Press <kbd>esc</kbd> to clear the input field.
 - Click `Power Icon` to close.
 
- 
+## Download
+
+For OS X :  [click here to download](https://github.com/lioder/HYGEE/releases/download/v1.0.0/hygee-1.0.0.dmg)
+
+ ## Thanks
+
+[electron](https://github.com/electron/electron)
+
+[menubar](https://github.com/maxogden/menubar)
