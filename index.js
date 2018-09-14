@@ -1,9 +1,9 @@
 var menubar = require('menubar')
-
-var mb = menubar()
-mb.setOption('width', 300);
-mb.setOption('icon', './static/img/IconTemplate.png')
-mb.on('ready', function ready () {
+require('path')
+var mb = menubar({
+    width: 300,
+    icon: __dirname + '/static/img/IconTemplate.png'
 })
-mb.on('after-create-window', function () {
+mb.on('after-close', function () {
+    mb.app.quit()
 })
